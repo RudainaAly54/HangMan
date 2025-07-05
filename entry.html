@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman - Entry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(ellipse at top left, #232b3b 60%, #232b3b 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #ff6b6b;
+        }
+        .main-wrapper {
+            background: rgba(40, 48, 68, 0.92);
+            border-radius: 24px;
+            max-width: 600px;
+            margin: 48px auto;
+            padding: 40px 36px 36px 36px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+            position: relative;
+            animation: fadeIn 1s;
+        }
+        h1 {
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+        }
+        .svg-center {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .hangman-svg {
+            width: 120px;
+            height: 120px;
+            display: block;
+        }
+        .hangman-part {
+            stroke: #ff6b6b;
+            stroke-width: 5;
+            stroke-linecap: round;
+            fill: none;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            animation: drawPart 0.28s ease forwards;
+        }
+        .hangman-part.base { animation-delay: 0.05s; }
+        .hangman-part.pole { animation-delay: 0.33s; }
+        .hangman-part.beam { animation-delay: 0.61s; }
+        .hangman-part.rope { animation-delay: 0.89s; }
+        .hangman-part.head { animation-delay: 1.17s; }
+        .hangman-part.body { animation-delay: 1.45s; }
+        .hangman-part.left-arm { animation-delay: 1.73s; }
+        .hangman-part.right-arm { animation-delay: 2.01s; }
+        .hangman-part.left-leg { animation-delay: 2.29s; }
+        .hangman-part.right-leg { animation-delay: 2.57s; }
+        @keyframes drawPart {
+            to { stroke-dashoffset: 0; }
+        }
+        .desc {
+            color: #ff6b6b;
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+        .btn-row {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            margin-top: 18px;
+        }
+        .btn-row a {
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 12px 32px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+            background: #ff6b6b;
+            color: #fff;
+            display: inline-block;
+        }
+        .btn-row a.start {
+            background: #4CAF50;
+        }
+        .btn-row a:hover {
+            filter: brightness(1.08);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 700px) {
+            .main-wrapper { padding: 18px 6px; }
+            h1 { font-size: 2rem; }
+            .hangman-svg { width: 80px; height: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <h1>Hangman</h1>
+        <div class="svg-center">
+            <svg class="hangman-svg" viewBox="0 0 120 120">
+                <!-- Base (always visible) -->
+                <line x1="10" y1="110" x2="110" y2="110" class="hangman-part base"/>
+                <!-- Pole -->
+                <line x1="30" y1="110" x2="30" y2="20" class="hangman-part pole"/>
+                <!-- Beam -->
+                <line x1="30" y1="20" x2="80" y2="20" class="hangman-part beam"/>
+                <!-- Rope -->
+                <line x1="80" y1="20" x2="80" y2="40" class="hangman-part rope"/>
+                <!-- Head -->
+                <circle cx="80" cy="50" r="10" class="hangman-part head"/>
+                <!-- Body -->
+                <line x1="80" y1="60" x2="80" y2="85" class="hangman-part body"/>
+                <!-- Left Arm -->
+                <line x1="80" y1="65" x2="68" y2="75" class="hangman-part left-arm"/>
+                <!-- Right Arm -->
+                <line x1="80" y1="65" x2="92" y2="75" class="hangman-part right-arm"/>
+                <!-- Left Leg -->
+                <line x1="80" y1="85" x2="70" y2="105" class="hangman-part left-leg"/>
+                <!-- Right Leg -->
+                <line x1="80" y1="85" x2="90" y2="105" class="hangman-part right-leg"/>
+            </svg>
+        </div>
+        <div class="desc">
+            Guess the hidden word one letter at a time.<br>
+            Each wrong guess draws another part of the hangman.<br>
+            Can you solve the word before the hangman is complete?
+        </div>
+        <div class="btn-row">
+            <a href="Guess.html" class="start">Start Game</a>
+            <a href="how-to-play.html">How to Play</a>
+            <a href="../welcomePage.html">Back to Neuronia</a>
+        </div>
+    </div>
+</body>
+</html> 
